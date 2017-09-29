@@ -5,9 +5,13 @@ public class CannonController : MonoBehaviour
     private const float PowerIncrement = 5;
     private const float MaxPower = 35;
     private const float MinPower = 5;
-    private const float AngleIncrement = 10;
+    private const float AngleIncrement = 5;
     private const float MaxAngle = 90;
     private const float MinAngle = 0;
+    private const float TranslationIncrement = .1f;
+    private const float MaxTranslation = 30;
+    private const float MinTranslation = 2;
+
 
     [SerializeField]
     private Text _angleText;
@@ -58,5 +62,13 @@ public class CannonController : MonoBehaviour
     {
         _angleText.text = _angle + "°";
         _powerText.text = _power + "";
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+            transform.root.position += Vector3.right * TranslationIncrement;
+        if (Input.GetKey(KeyCode.LeftArrow))
+            transform.root.position += Vector3.left * TranslationIncrement;
     }
 }
