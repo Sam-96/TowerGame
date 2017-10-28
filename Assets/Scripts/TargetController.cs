@@ -6,16 +6,28 @@ using UnityEngine.UI;
 
 public class TargetController : MonoBehaviour {
 
+    public int _score = 0;
+    public Text score;
 
-    // Use this for initialization
-    void Start()
+    public void Start()
     {
-
+        SetScoreText();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        //if collision is a cannonball
+        if (collision.gameObject.tag == "cannonBall")
+        {
+            _score++;
+            SetScoreText();
 
+        }
     }
+
+    void SetScoreText()
+    { 
+            score.text = "Score: " + _score.ToString();
+    }
+   
 }
